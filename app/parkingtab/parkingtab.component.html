@@ -1,0 +1,74 @@
+<p>parkingtab works!</p>
+
+
+<div class="container">
+  <div >
+
+    <table class="table ">
+      <tr class=" row row-cols-5 border" >
+        <td [ngClass]="{mainbox:(arr[indexnum] && arr[i].status)}" class=" border"  *ngFor="let item of rownum; let i = index"><button data-bs-toggle="modal" data-bs-target="#exampleModal"
+          class="btn p-5" (click)="clc(i)">{{item}}      </button>
+<ng-container *ngFor="let items of arr">
+
+
+  <ng-container *ngIf="i==items.id"  >
+    <ng-container class="col  border p-2 text-center g-2 me-2  text-white">
+
+<p>
+  {{items.carnum}}
+</p>
+<p>
+  {{items.intime}}
+</p>
+    </ng-container>
+  </ng-container>
+        </ng-container>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="form">
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label" >Car number:</label>
+                    <input type="text" class="form-control" formControlName="carnum" id="recipient-name">
+                  </div>
+                  <div class="mb-3" >
+                 <label for="">InTime</label>
+                 <input type="time" class="form-control" formControlName="intime" >
+                  </div>
+                  <div class="mb-3" >
+                 <label for="">OutTime</label>
+                 <input *ngIf="t && t.status" type="time"  class="form-control" formControlName="outtime" >
+                  </div>
+                </form>
+                {{form.value|json}}
+              </div>
+              <div class="modal-footer">
+                <div *ngIf="t && t.status">
+
+                  <button type="button" class="btn btn-secondary" (click)="carout(item)"   data-bs-dismiss="modal">out</button>
+                </div>
+                <div >
+
+                  <button type="button" class="btn btn-primary" (click)="carin(item)"   data-bs-dismiss="modal">IN</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+
+
+  <div *ngIf="t && t.status==false">
+{{tt}}
+  </div>
+</div>
